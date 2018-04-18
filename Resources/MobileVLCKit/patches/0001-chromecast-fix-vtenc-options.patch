@@ -1,0 +1,27 @@
+From deeaf49d9cc2d3d618c9790586839179f6d51ef7 Mon Sep 17 00:00:00 2001
+From: Thomas Guillem <thomas@gllm.fr>
+Date: Wed, 28 Mar 2018 11:58:15 +0200
+Subject: [PATCH] chromecast: fix vtenc options
+
+These options don't work with iOS.
+The "vb" and "realtime" options are the most important.
+---
+ modules/stream_out/chromecast/cast.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modules/stream_out/chromecast/cast.cpp b/modules/stream_out/chromecast/cast.cpp
+index dc75d98e02..625b9306f9 100644
+--- a/modules/stream_out/chromecast/cast.cpp
++++ b/modules/stream_out/chromecast/cast.cpp
+@@ -976,7 +976,7 @@ static std::string GetVencAvcodecVTOption( sout_stream_t * /* p_stream */,
+ {
+     const bool b_hdres = p_vid == NULL || p_vid->i_height == 0 || p_vid->i_height >= 800;
+     std::stringstream ssout;
+-    ssout << "venc=avcodec{codec=h264_videotoolbox,bframes=3,keyint=250,options{realtime=1,profile=high,level=4.0}}";
++    ssout << "venc=avcodec{codec=h264_videotoolbox,options{realtime=1}}";
+     if( b_hdres )
+     {
+         switch( i_quality )
+-- 
+2.15.0
+

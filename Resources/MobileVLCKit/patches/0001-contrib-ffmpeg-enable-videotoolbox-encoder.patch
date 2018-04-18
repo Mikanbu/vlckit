@@ -1,0 +1,25 @@
+From 1003d6aa220d18088d2d6d2949dc117b622f85e3 Mon Sep 17 00:00:00 2001
+From: Thomas Guillem <thomas@gllm.fr>
+Date: Tue, 27 Mar 2018 16:49:34 +0200
+Subject: [PATCH] contrib: ffmpeg: enable videotoolbox encoder
+
+No problem for decoders since it won't be used.
+---
+ contrib/src/ffmpeg/rules.mak | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/contrib/src/ffmpeg/rules.mak b/contrib/src/ffmpeg/rules.mak
+index 434e4d3e90..548171aa79 100644
+--- a/contrib/src/ffmpeg/rules.mak
++++ b/contrib/src/ffmpeg/rules.mak
+@@ -47,7 +47,6 @@ FFMPEGCONF += \
+ 	--disable-linux-perf
+ ifdef HAVE_DARWIN_OS
+ FFMPEGCONF += \
+-	--disable-videotoolbox \
+ 	--disable-securetransport
+ endif
+ endif
+-- 
+2.15.0
+
