@@ -152,7 +152,6 @@ renamePackage()
     fi
     getVLCHashes
 
-
     local packageName="${TARGET}-REPLACEWITHVERSION.tar.xz"
 
     if [ -f $packageName ]; then
